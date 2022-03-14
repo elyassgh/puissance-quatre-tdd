@@ -22,6 +22,19 @@ public class Grid {
     }
 
     public void insert(int i, char m) {
-         matrix[5][0]='M';
+
+        boolean flag = false;
+        for (int j = this.matrix.length - 1 ; j >= 0 ; j--) {
+
+            if (this.matrix[j][i] == '-') {
+                flag = true;
+                this.matrix[j][i] = m ;
+                break;
+            }
+
+
+        }
+        if( !flag ) throw new IllegalArgumentException("overflow");
+
     }
 }

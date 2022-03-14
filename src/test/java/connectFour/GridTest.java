@@ -53,9 +53,11 @@ public class GridTest {
     @Test
     public void shouldContainsTheNewInsertedElement() {
         Grid grid = new Grid();
-        grid.insert(1,'M');
+        grid.insert(0,'M');
         assertArrayEquals(grid.getMatrix(), FILLEDMATRIX);
 
     }
+
+
 
 }
