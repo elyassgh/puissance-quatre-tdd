@@ -9,11 +9,25 @@ public class GridTest {
 
     char[][] EMPTYMATRIX = {
             {'-', '-', '-', '-', '-', '-', '-'},
-            {'-', '-', '-', '-', '-', '-','-'},
-            {'-', '-', '-', '-', '-', '-','-'},
-            {'-', '-', '-', '-', '-', '-','-'},
-            {'-', '-', '-', '-', '-', '-','-'},
-            {'-', '-', '-', '-', '-', '-','-'}};
+            {'-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-'}};
+    char[][] FILLEDMATRIX = {
+            {'-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-'},
+            {'-', '-', '-', '-', '-', '-', '-'},
+            {'M', '-', '-', '-', '-', '-', '-'}};
+    char[][] FULLMATRIX = {
+            {'M', 'M', 'M', 'M', 'M', 'M', 'M'},
+            {'M', 'M', 'M', 'M', 'M', 'M', 'M'},
+            {'M', 'M', 'M', 'M', 'M', 'M', 'M'},
+            {'M', 'M', 'M', 'M', 'M', 'M', 'M'},
+            {'M', 'M', 'M', 'M', 'M', 'M', 'M'},
+            {'M', 'M', 'M', 'M', 'M', 'M', 'M'},};
 
 
     @Test
@@ -32,7 +46,15 @@ public class GridTest {
     @Test
     public void shouldContainDashInAllPointOnInit() {
         Grid grid = new Grid();
-        assertArrayEquals(grid.getMatrix(),EMPTYMATRIX);
+        assertArrayEquals(grid.getMatrix(), EMPTYMATRIX);
+
+    }
+
+    @Test
+    public void shouldContainsTheNewInsertedElement() {
+        Grid grid = new Grid();
+        grid.insert(1,'M');
+        assertArrayEquals(grid.getMatrix(), FILLEDMATRIX);
 
     }
 

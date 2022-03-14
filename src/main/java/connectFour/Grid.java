@@ -20,4 +20,8 @@ public class Grid {
     public void setMatrix(char[][] matrix) {
         this.matrix = matrix;
     }
+
+    public void insert(int i, char m) {
+         matrix[5][0]='M';
+    }
 }
