@@ -1,21 +1,19 @@
+package connectFour;
+
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class GridTest {
 
-    char [][] EMPTYMATRIX = {
-            {'-', '-', '-', '-', '-', '-','-'},
+    char[][] EMPTYMATRIX = {
+            {'-', '-', '-', '-', '-', '-', '-'},
             {'-', '-', '-', '-', '-', '-','-'},
             {'-', '-', '-', '-', '-', '-','-'},
             {'-', '-', '-', '-', '-', '-','-'},
             {'-', '-', '-', '-', '-', '-','-'},
             {'-', '-', '-', '-', '-', '-','-'}};
-
 
 
     @Test
@@ -35,7 +33,6 @@ public class GridTest {
     public void shouldContainDashInAllPointOnInit() {
         Grid grid = new Grid();
         assertArrayEquals(grid.getMatrix(),EMPTYMATRIX);
-
 
     }
 

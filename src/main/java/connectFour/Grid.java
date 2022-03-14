@@ -1,3 +1,5 @@
+package connectFour;
+
 import java.util.Arrays;
 
 public class Grid {
