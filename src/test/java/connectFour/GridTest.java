@@ -22,15 +22,33 @@ public class GridTest {
     @Test
     public void shouldContainDashInAllPointOnInit() {
         Grid grid = new Grid();
-        assertArrayEquals(grid.getMatrix(), GridUtils.EMPTYMATRIX);
 
+        Grid expected = new Grid(GridUtils.EMPTYMATRIX);
+
+        assertEquals(expected, grid);
     }
 
     @Test
     public void shouldContainsTheNewInsertedElement() {
         Grid grid = new Grid();
-        grid.insert(0,'M');
-        assertArrayEquals(grid.getMatrix(), GridUtils.FILLEDMATRIX);
+        grid.insert(0, 'M');
+
+        Grid expected = new Grid(GridUtils.FILLEDMATRIX);
+
+        assertEquals(expected, grid);
+    }
+
+    @Test
+    public void shouldContainsTheNewInsertedElement2() {
+        Grid grid = new Grid();
+
+        for (int i = 0; i < grid.getNbLines() - 1; i++) {
+            grid.insert(0, 'M');
+        }
+
+        Grid expected = new Grid(GridUtils.PREOVERFLOWMATRIX);
+
+        assertEquals(expected, grid);
     }
 
     @Test
@@ -52,6 +70,61 @@ public class GridTest {
     public void shouldThrowExceptionOnColumnOverflow() {
         Grid grid = new Grid();
         assertThrows(IllegalArgumentException.class, () -> grid.insert(grid.getNbColumns(), 'M'));
+    }
+
+    @Test
+    public void shouldEmptyTheGivenMatrix() {
+        Grid grid = new Grid();
+
+        for (int i = 0; i < grid.getNbLines(); i++) {
+            grid.insert(1, 'M');
+        }
+
+        grid.empty();
+        assertTrue(grid.isEmpty());
+
+    }
+
+    @Test
+    public void shouldFormatTheGridAsAnEmptyGrid() {
+
+        Grid grid = new Grid();
+
+        String format = grid.format();
+
+        String expected =
+                "#===============#\n" +
+                        "| - - - - - - - |\n" +
+                        "| - - - - - - - |\n" +
+                        "| - - - - - - - |\n" +
+                        "| - - - - - - - |\n" +
+                        "| - - - - - - - |\n" +
+                        "| - - - - - - - |\n" +
+                        "#===============#";
+
+        assertEquals(expected, format);
+    }
+
+    @Test
+    public void shouldFormatTheGridWithOneStep() {
+
+        Grid grid = new Grid();
+
+        grid.insert(0, 'M');
+
+        String format = grid.format();
+
+        String expected =
+                "#===============#\n" +
+                        "| - - - - - - - |\n" +
+                        "| - - - - - - - |\n" +
+                        "| - - - - - - - |\n" +
+                        "| - - - - - - - |\n" +
+                        "| - - - - - - - |\n" +
+                        "| M - - - - - - |\n" +
+                        "#===============#";
+
+        assertEquals(expected, format);
     }
 
 }

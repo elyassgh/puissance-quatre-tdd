@@ -15,6 +15,10 @@ public class Grid {
         }
     }
 
+    public Grid(char[][] matrix) {
+        this.matrix = matrix;
+    }
+
     public char[][] getMatrix() {
         return matrix;
     }
@@ -47,4 +51,33 @@ public class Grid {
             throw new IllegalArgumentException("Column is full");
 
     }
+
+    public void empty() {
+        this.matrix = GridUtils.EMPTYMATRIX;
+    }
+
+    public boolean isEmpty() {
+        return Arrays.deepEquals(this.matrix, GridUtils.EMPTYMATRIX);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        Grid g = (Grid) other;
+        return Arrays.deepEquals(this.matrix, g.matrix);
+    }
+
+    public String format() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("#===============#");
+        for (char[] chars : matrix) {
+            builder.append("\n| ");
+            for (char c : chars) {
+                builder.append(c).append(' ');
+            }
+            builder.append("|");
+        }
+        builder.append("\n#===============#");
+        return builder.toString();
+    }
+
 }
