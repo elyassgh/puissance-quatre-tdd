@@ -63,6 +63,15 @@ public class Grid implements GridService{
         return Arrays.deepEquals(this.matrix, GridUtils.EMPTY_MATRIX);
     }
 
+    public boolean isUncompleted() {
+        for (char[] chars : matrix) {
+            for (char c : chars) {
+                if (c == EMPTY_TOKEN) return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public boolean equals(Object other) {
         Grid g = (Grid) other;
@@ -83,19 +92,9 @@ public class Grid implements GridService{
         return builder.toString();
     }
 
-    public boolean isFull() {
-        for (int i = 0; i < nbLines; i++) {
-            for (int j = 0; j < nbColumns; j++) {
-                if (this.matrix[i][j] == EMPTY_TOKEN)
-                    return false;
-            }
-        }
-        return true;
-    }
-
     @Override
     public char[][] getRows() {
-        return new char[0][];
+        return this.matrix;
     }
 
     @Override

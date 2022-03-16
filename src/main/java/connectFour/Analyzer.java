@@ -6,9 +6,6 @@ public class Analyzer {
 
     public Optional<Character> check(Grid grid) {
 
-        if (grid.isFull())
-            return Optional.empty();
-
         Character winnerR = findWinner(grid.getRows());
         if (winnerR != null) return Optional.of(winnerR);
 
@@ -30,6 +27,10 @@ public class Analyzer {
             winner = chars[0];
             for (int i = 1; i < chars.length; i++) {
                 if (winner == chars[i]) {
+                    if (winner == '-') {
+                        count = 1;
+                        continue;
+                    }
                     count++;
                     if (count >= 4) return winner;
                 } else {

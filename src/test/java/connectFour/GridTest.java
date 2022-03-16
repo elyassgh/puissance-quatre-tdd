@@ -46,7 +46,7 @@ public class GridTest {
             grid.insert(0, 'M');
         }
 
-        Grid expected = new Grid(GridUtils.PREOVERFLOW_MATRIX);
+        Grid expected = new Grid(GridUtils.PRE_OVERFLOW_MATRIX);
 
         assertEquals(expected, grid);
     }
@@ -92,15 +92,7 @@ public class GridTest {
 
         String format = grid.format();
 
-        String expected =
-                "#===============#\n" +
-                        "| - - - - - - - |\n" +
-                        "| - - - - - - - |\n" +
-                        "| - - - - - - - |\n" +
-                        "| - - - - - - - |\n" +
-                        "| - - - - - - - |\n" +
-                        "| - - - - - - - |\n" +
-                        "#===============#";
+        String expected = GridUtils.EMPTY_GRID_VIEW;
 
         assertEquals(expected, format);
     }
@@ -114,15 +106,7 @@ public class GridTest {
 
         String format = grid.format();
 
-        String expected =
-                "#===============#\n" +
-                        "| - - - - - - - |\n" +
-                        "| - - - - - - - |\n" +
-                        "| - - - - - - - |\n" +
-                        "| - - - - - - - |\n" +
-                        "| - - - - - - - |\n" +
-                        "| M - - - - - - |\n" +
-                        "#===============#";
+        String expected = GridUtils.EMPTY_GRID_VIEW_ONE_STEP;
 
         assertEquals(expected, format);
     }

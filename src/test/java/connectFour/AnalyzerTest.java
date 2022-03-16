@@ -16,9 +16,7 @@ public class AnalyzerTest {
 
     Analyzer analyzer;
 
-    Grid grid = new Grid();
-    Grid gridMock = Mockito.spy(grid);
-
+    Grid gridMock = Mockito.spy(new Grid());
 
     @Before
     public void setUp() throws Exception {
@@ -54,7 +52,6 @@ public class AnalyzerTest {
         when(gridMock.getColumns()).thenReturn(
                 GridUtils.LIST_COLUMNS
         );
-
 
         Optional<Character> result = analyzer.check(gridMock);
         Optional<Character> expected = Optional.of('M');
