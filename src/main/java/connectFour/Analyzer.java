@@ -29,7 +29,6 @@ public class Analyzer {
             count = 1;
             winner = chars[0];
             for (int i = 1; i < chars.length; i++) {
-                // TODO
                 if (winner == chars[i]) {
                     count++;
                     if (count >= 4) return winner;
