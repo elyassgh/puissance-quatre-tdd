@@ -9,26 +9,38 @@ public class Analyzer {
         if (grid.isFull())
             return Optional.empty();
 
-        return Optional.of('M');
+        Character winnerR = findWinner(grid.getRows());
+        if (winnerR != null) return Optional.of(winnerR);
+
+        Character winnerC = findWinner(grid.getColumns());
+        if (winnerC != null) return Optional.of(winnerC);
+
+        Character winnerD = findWinner(grid.getDiagonals());
+        if (winnerD != null) return Optional.of(winnerD);
+
+        return Optional.empty();
 
     }
 
-    public void checkRow(char[][] matrix) {
+    public Character findWinner(char[][] list) {
         char winner;
-        int count = 0;
-        for (char[] chars : matrix) {
-            for (int j = 1; j < matrix[0].length; j++) {
+        int count;
+        for (char[] chars : list) {
+            count = 1;
+            winner = chars[0];
+            for (int i = 1; i < chars.length; i++) {
                 // TODO
+                if (winner == chars[i]) {
+                    count++;
+                    if (count >= 4) return winner;
+                } else {
+                    count = 1;
+                    winner = chars[i];
+                }
             }
         }
+        return null;
     }
 
-    public void checkColumn(char[][] matrix) {
-        // TODO
-    }
-
-    public void checkDiagonal(char[][] matrix) {
-        // TODO
-    }
 
 }

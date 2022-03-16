@@ -2,14 +2,23 @@ package connectFour;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 public class AnalyzerTest {
 
     Analyzer analyzer;
+
+    Grid grid = new Grid();
+    Grid gridMock = Mockito.spy(grid);
+
 
     @Before
     public void setUp() throws Exception {
@@ -29,10 +38,12 @@ public class AnalyzerTest {
     @Test
     public void itShouldReturnOptionalContainPlayerOneWhenHas4TokensHorizontally() {
 
-        Grid grid = new Grid(GridUtils.MATRIX_WITH_M_WINNER_IN_COLUMN);
+        when(gridMock.getRows()).thenReturn(
+                GridUtils.LIST_ROWS
+        );
 
-        Optional<Character> result = analyzer.check(grid);
-        Optional<Character> expected = Optional.of('M');
+        Optional<Character> result = analyzer.check(gridMock);
+        Optional<Character> expected = Optional.of('R');
 
         assertEquals(expected, result);
     }
@@ -40,9 +51,12 @@ public class AnalyzerTest {
     @Test
     public void itShouldReturnOptionalContainPlayerOneWhenHas4TokensVertically() {
 
-        Grid grid = new Grid(GridUtils.MATRIX_WITH_M_WINNER_IN_ROW);
+        when(gridMock.getColumns()).thenReturn(
+                GridUtils.LIST_COLUMNS
+        );
 
-        Optional<Character> result = analyzer.check(grid);
+
+        Optional<Character> result = analyzer.check(gridMock);
         Optional<Character> expected = Optional.of('M');
 
         assertEquals(expected, result);
@@ -52,9 +66,11 @@ public class AnalyzerTest {
     @Test
     public void itShouldReturnOptionalContainPlayerOneWhenHas4TokensDiagonally() {
 
-        Grid grid = new Grid(GridUtils.MATRIX_WITH_M_WINNER_IN_DIAGONAL);
+        when(gridMock.getDiagonals()).thenReturn(
+                GridUtils.LIST_DIAGONALS
+        );
 
-        Optional<Character> result = analyzer.check(grid);
+        Optional<Character> result = analyzer.check(gridMock);
         Optional<Character> expected = Optional.of('M');
 
         assertEquals(expected, result);

@@ -5,7 +5,7 @@ import java.util.Arrays;
 import static connectFour.GridUtils.EMPTY_TOKEN;
 
 
-public class Grid {
+public class Grid implements GridService{
 
     private char[][] matrix;
     private int nbLines = 6;
@@ -91,5 +91,20 @@ public class Grid {
             }
         }
         return true;
+    }
+
+    @Override
+    public char[][] getRows() {
+        return new char[0][];
+    }
+
+    @Override
+    public char[][] getColumns() {
+        return new char[0][];
+    }
+
+    @Override
+    public char[][] getDiagonals() {
+        return new char[0][];
     }
 }

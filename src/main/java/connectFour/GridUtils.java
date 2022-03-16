@@ -68,4 +68,32 @@ public class GridUtils {
             {'M', 'R', 'M', 'M', '-', 'R', 'R'},
             {'R', 'M', 'M', 'R', 'M', 'M', 'M'}};
 
+    public static final char[][] LIST_ROWS = MATRIX_WITH_M_WINNER_IN_ROW;
+
+    public static final char[][] LIST_COLUMNS = {
+            {'M', 'R', 'M', 'M', 'M', 'M'},
+            {'R', 'M', 'M', 'R', 'M', 'R'},
+            {'M', 'R', 'M', '-', '-', '-'},
+            {'M', 'M', 'R', 'M', '-', '-'},
+            {'M', 'R', 'M', 'M', '-', '-'},
+            {'R', 'M', 'M', 'R', '-', '-'},
+            {'R', 'M', 'M', '-', '-', '-'},
+    };
+
+    public static final char[][] LIST_DIAGONALS = {
+            {'M', 'R', 'M', 'M', 'M', 'M'},
+            {'M', 'R', 'M', 'M', 'M'},
+            {'M', 'M', 'M', 'M'},
+            {'M', 'R', 'M'},
+            {'M', 'R'},
+            {'M'},
+            {'M', 'R', 'M', 'M', 'M'},
+            {'M', 'R', 'M', 'R', 'M', 'M'},
+            {'M', 'R', 'M', 'M'},
+            {'M', 'R', 'M'},
+            {'M', 'R'},
+            {'M'},
+
+
+    };
 }
