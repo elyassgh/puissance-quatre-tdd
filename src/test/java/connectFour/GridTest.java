@@ -23,7 +23,7 @@ public class GridTest {
     public void shouldContainDashInAllPointOnInit() {
         Grid grid = new Grid();
 
-        Grid expected = new Grid(GridUtils.EMPTYMATRIX);
+        Grid expected = new Grid(GridUtils.EMPTY_MATRIX);
 
         assertEquals(expected, grid);
     }
@@ -33,7 +33,7 @@ public class GridTest {
         Grid grid = new Grid();
         grid.insert(0, 'M');
 
-        Grid expected = new Grid(GridUtils.FILLEDMATRIX);
+        Grid expected = new Grid(GridUtils.FILLED_MATRIX);
 
         assertEquals(expected, grid);
     }
@@ -46,7 +46,7 @@ public class GridTest {
             grid.insert(0, 'M');
         }
 
-        Grid expected = new Grid(GridUtils.PREOVERFLOWMATRIX);
+        Grid expected = new Grid(GridUtils.PREOVERFLOW_MATRIX);
 
         assertEquals(expected, grid);
     }

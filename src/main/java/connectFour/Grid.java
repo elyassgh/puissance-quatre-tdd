@@ -2,6 +2,9 @@ package connectFour;
 
 import java.util.Arrays;
 
+import static connectFour.GridUtils.EMPTY_TOKEN;
+
+
 public class Grid {
 
     private char[][] matrix;
@@ -11,7 +14,7 @@ public class Grid {
     public Grid() {
         this.matrix = new char[nbLines][nbColumns];
         for (char[] chars : matrix) {
-            Arrays.fill(chars, '-');
+            Arrays.fill(chars, EMPTY_TOKEN);
         }
     }
 
@@ -31,7 +34,7 @@ public class Grid {
         return nbColumns;
     }
 
-    public void insert(int i, char m) {
+    public void insert(int i, char token) {
 
         if (i < 0 || i > nbColumns - 1) {
             throw new IllegalArgumentException("Column should be within 0 and " + (nbColumns - 1));
@@ -40,9 +43,9 @@ public class Grid {
         boolean foundEmptySpot = false;
         for (int j = nbLines - 1; j >= 0; j--) {
 
-            if (this.matrix[j][i] == '-') {
+            if (this.matrix[j][i] == EMPTY_TOKEN) {
                 foundEmptySpot = true;
-                this.matrix[j][i] = m;
+                this.matrix[j][i] = token;
                 break;
             }
 
@@ -53,11 +56,11 @@ public class Grid {
     }
 
     public void empty() {
-        this.matrix = GridUtils.EMPTYMATRIX;
+        this.matrix = GridUtils.EMPTY_MATRIX;
     }
 
     public boolean isEmpty() {
-        return Arrays.deepEquals(this.matrix, GridUtils.EMPTYMATRIX);
+        return Arrays.deepEquals(this.matrix, GridUtils.EMPTY_MATRIX);
     }
 
     @Override
@@ -80,4 +83,13 @@ public class Grid {
         return builder.toString();
     }
 
+    public boolean isFull() {
+        for (int i = 0; i < nbLines; i++) {
+            for (int j = 0; j < nbColumns; j++) {
+                if (this.matrix[i][j] == EMPTY_TOKEN)
+                    return false;
+            }
+        }
+        return true;
+    }
 }
